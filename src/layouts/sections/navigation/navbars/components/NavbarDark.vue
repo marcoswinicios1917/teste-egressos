@@ -4,3 +4,4 @@ import NavbarDefault from "@/examples/navbars/NavbarDefault.vue";
 <template>
   <NavbarDefault dark transparent />
 </template>
+é

@@ -1,605 +1,159 @@
-<script setup>
-import { RouterLink } from "vue-router";
-import { ref, watch } from "vue";
-import { useWindowsWidth } from "../../assets/js/useWindowsWidth";
-
-// images
-import ArrDark from "@/assets/img/down-arrow-dark.svg";
-import downArrow from "@/assets/img/down-arrow.svg";
-import DownArrWhite from "@/assets/img/down-arrow-white.svg";
-
-const props = defineProps({
-  action: {
-    type: Object,
-    route: String,
-    color: String,
-    label: String,
-    default: () => ({
-      route: "https://www.creative-tim.com/product/vue-material-kit",
-      color: "bg-gradient-success",
-      label: "Free Download",
-    }),
-  },
-  transparent: {
-    type: Boolean,
-    default: false,
-  },
-  light: {
-    type: Boolean,
-    default: false,
-  },
-  dark: {
-    type: Boolean,
-    default: false,
-  },
-  sticky: {
-    type: Boolean,
-    default: false,
-  },
-  darkText: {
-    type: Boolean,
-    default: false,
-  },
-});
-
-// set arrow color
-function getArrowColor() {
-  if (props.transparent && textDark.value) {
-    return ArrDark;
-  } else if (props.transparent) {
-    return DownArrWhite;
-  } else {
-    return ArrDark;
-  }
-}
-
-// set text color
-const getTextColor = () => {
-  let color;
-  if (props.transparent && textDark.value) {
-    color = "text-dark";
-  } else if (props.transparent) {
-    color = "text-white";
-  } else {
-    color = "text-dark";
-  }
-
-  return color;
-};
-
-// set nav color on mobile && desktop
-let textDark = ref(props.darkText);
-const { type } = useWindowsWidth();
-
-if (type.value === "mobile") {
-  textDark.value = true;
-} else if (type.value === "desktop" && textDark.value == false) {
-  textDark.value = false;
-}
-
-watch(
-  () => type.value,
-  (newValue) => {
-    if (newValue === "mobile") {
-      textDark.value = true;
-    } else {
-      textDark.value = false;
-    }
-  }
-);
-</script>
-
 <template>
-  <nav
-    class="navbar navbar-expand-lg top-0"
-    :class="{
-      'z-index-3 w-100 shadow-none navbar-transparent position-absolute my-3':
-        props.transparent,
-      'my-3 blur border-radius-lg z-index-3 py-2 shadow py-2 start-0 end-0 mx-4 position-absolute mt-4':
-        props.sticky,
-      'navbar-light bg-white py-3': props.light,
-      'navbar-dark bg-gradient-dark z-index-3 py-3': props.dark,
-    }"
-  >
-    <div
-      :class="
-        props.transparent || props.light || props.dark
-          ? 'container'
-          : 'container-fluid px-0'
-      "
-    >
-      <RouterLink
-        class="navbar-brand d-none d-md-block"
-        :class="[
-          (props.transparent && textDark.value) || !props.transparent
-            ? 'text-dark font-weight-bolder ms-sm-3'
-            : 'text-white font-weight-bolder ms-sm-3',
-        ]"
-        :to="{ name: 'presentation' }"
-        rel="tooltip"
-        title="Designed and Coded by Creative Tim"
-        data-placement="bottom"
-      >
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container-fluid">
+      <!-- Logo do site -->
+      <RouterLink to="/" class="navbar-brand ms-3">
         <img
-          src="../../assets/img/egressosufdpar.png"
-          alt="Descrição da Imagem"
-          class="img-fluid"
-          style="max-width: 150px"
+          src="@/assets/img/egressosufdpar.png"
+          alt="Logo Egressos UFDPar"
+          class="img-fluid logo"
         />
       </RouterLink>
 
-      <RouterLink
-        class="navbar-brand d-block d-md-none fs-4"
-        :class="
-          props.transparent || props.dark
-            ? 'text-white'
-            : 'font-weight-bolder ms-sm-3'
-        "
-        to="/"
-        rel="tooltip"
-        title="Designed and Coded by Creative Tim"
-        data-placement="bottom"
-      >
-        Material Design
-      </RouterLink>
-      <a
-        href="https://www.creative-tim.com/product/vue-material-kit-pro"
-        class="btn btn-sm bg-gradient-success mb-0 ms-auto d-lg-none d-block fs-4"
-        >Buy Now</a
-      >
       <button
-        class="navbar-toggler shadow-none ms-2"
+        class="navbar-toggler"
         type="button"
         data-bs-toggle="collapse"
-        data-bs-target="#navigation"
-        aria-controls="navigation"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon mt-2" style="font-size: 1.5rem">
-          <span class="navbar-toggler-bar bar1"></span>
-          <span class="navbar-toggler-bar bar2"></span>
-          <span class="navbar-toggler-bar bar3"></span>
-        </span>
+        <span class="navbar-toggler-icon"></span>
       </button>
-      <div
-        class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0"
-        id="navigation"
-      >
-        <ul class="navbar-nav navbar-nav-hover ms-auto">
-          <li class="nav-item dropdown dropdown-hover mx-2">
-            <a
-              role="button"
-              class="nav-link ps-2 d-flex cursor-pointer align-items-center fs-4"
-              :class="getTextColor()"
-              id="dropdownMenuPages"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <i
-                class="material-icons me-2"
-                :class="['text-primary', getTextColor()]"
-                style="font-size: 2rem"
-              >
-                article
-              </i>
-              <span style="font-size: 1.25rem">Páginas</span>
-              <img
-                :src="getArrowColor()"
-                alt="down-arrow"
-                class="arrow ms-2 d-lg-block d-none"
-              />
-              <img
-                :src="getArrowColor()"
-                alt="down-arrow"
-                class="arrow ms-1 d-lg-none d-block ms-auto"
-              />
-            </a>
 
-            <div
-              class="dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-xl mt-0 mt-lg-3"
-              aria-labelledby="dropdownMenuPages"
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <!-- Botão Home -->
+          <li class="nav-item">
+            <RouterLink
+              to="/"
+              class="nav-link"
+              :class="isActive('/') ? 'active' : ''"
             >
-              <div class="row d-none d-lg-block">
-                <div class="col-12 px-4 py-2">
-                  <div class="row">
-                    <div class="position-relative">
-                      <div
-                        class="dropdown-header text-dark font-weight-bolder d-flex align-items-center px-1"
-                      >
-                        Páginas de Destino
-                      </div>
-                      <RouterLink
-                        :to="{ name: 'about' }"
-                        class="dropdown-item border-radius-md"
-                      >
-                        <span>Sobre Nós</span>
-                      </RouterLink>
-                      <RouterLink
-                        :to="{ name: 'contactus' }"
-                        class="dropdown-item border-radius-md"
-                      >
-                        <span>Fale Conosco</span>
-                      </RouterLink>
-                      <RouterLink
-                        :to="{ name: 'author' }"
-                        class="dropdown-item border-radius-md"
-                      >
-                        <span>Equipe</span>
-                      </RouterLink>
-                      <div
-                        class="dropdown-header text-dark font-weight-bolder d-flex align-items-center px-0 mt-3"
-                      >
-                        Conta
-                      </div>
-                      <RouterLink
-                        :to="{ name: 'signin-basic' }"
-                        class="dropdown-item border-radius-md"
-                      >
-                        <span>Entrar</span>
-                      </RouterLink>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="d-lg-none">
-                <div
-                  class="dropdown-header text-dark font-weight-bolder d-flex align-items-center px-0"
-                >
-                  Páginas de Destino
-                </div>
-                <RouterLink
-                  :to="{ name: 'about' }"
-                  class="dropdown-item border-radius-md"
-                >
-                  <span>Sobre Nós</span>
-                </RouterLink>
-                <RouterLink
-                  :to="{ name: 'contactus' }"
-                  class="dropdown-item border-radius-md"
-                >
-                  <span>Fale Conosco</span>
-                </RouterLink>
-                <RouterLink
-                  :to="{ name: 'author' }"
-                  class="dropdown-item border-radius-md"
-                >
-                  <span>Equipe</span>
-                </RouterLink>
-                <div
-                  class="dropdown-header text-dark font-weight-bolder d-flex align-items-center px-0 mt-3"
-                >
-                  Conta
-                </div>
-                <RouterLink
-                  :to="{ name: 'signin-basic' }"
-                  class="dropdown-item border-radius-md"
-                >
-                  <span>Entrar</span>
-                </RouterLink>
-              </div>
-            </div>
+              Home
+            </RouterLink>
           </li>
-
-          <li class="nav-item dropdown dropdown-hover mx-2">
-            <a
-              role="button"
-              class="nav-link ps-2 d-flex cursor-pointer align-items-center fs-4"
-              :class="getTextColor()"
-              id="dropdownMenuBlocks"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
+          <!-- Pesquisa de Egressos -->
+          <li class="nav-item">
+            <RouterLink
+              to="/egressos"
+              class="nav-link"
+              :class="isActive('/egressos') ? 'active' : ''"
             >
-              <i
-                class="material-icons me-2"
-                :class="['text-primary', getTextColor()]"
-                style="font-size: 2rem"
-              >
-                folder_open
-              </i>
-              <span style="font-size: 1.25rem">Navegação</span>
-              <img
-                :src="getArrowColor()"
-                alt="seta-para-baixo"
-                class="arrow ms-2 d-lg-block d-none"
-              />
-              <img
-                :src="getArrowColor()"
-                alt="seta-para-baixo"
-                class="arrow ms-1 d-lg-none d-block ms-auto"
-              />
-            </a>
-
-            <div
-              class="dropdown-menu dropdown-menu-end dropdown-menu-animation dropdown-md dropdown-md-responsive p-3 border-radius-lg mt-0 mt-lg-3"
-              aria-labelledby="dropdownMenuBlocks"
-            >
-              <div class="d-none d-lg-block">
-                <ul class="list-group text-start">
-                  <li
-                    class="nav-item dropdown dropdown-hover dropdown-subitem list-group-item border-0 p-0"
-                  >
-                    <a
-                      class="dropdown-item py-2 ps-3 border-radius-md"
-                      href="javascript:;"
-                    >
-                      <div class="d-flex">
-                        <div
-                          class="w-100 d-flex align-items-start justify-content-between"
-                        >
-                          <div>
-                            <h6
-                              class="dropdown-header text-dark font-weight-bolder align-items-start p-0"
-                            >
-                              Oportunidades
-                            </h6>
-                            <span class="text-sm"
-                              >Explore as oportunidades disponíveis</span
-                            >
-                          </div>
-                          <img
-                            :src="downArrow"
-                            alt="seta-para-baixo"
-                            class="arrow"
-                          />
-                        </div>
-                      </div>
-                    </a>
-                    <div class="dropdown-menu mt-0 py-3 px-2 mt-3 text-start">
-                      <RouterLink
-                        class="dropdown-item ps-3 border-radius-md mb-1"
-                        :to="{ name: 'page-headers' }"
-                      >
-                        Empregos
-                      </RouterLink>
-                      <RouterLink
-                        class="dropdown-item ps-3 border-radius-md mb-1"
-                        :to="{ name: 'page-features' }"
-                      >
-                        Estágios
-                      </RouterLink>
-                    </div>
-                  </li>
-
-                  <li
-                    class="nav-item dropdown dropdown-hover dropdown-subitem list-group-item border-0 p-0"
-                  >
-                    <a
-                      class="dropdown-item py-2 ps-3 border-radius-md"
-                      href="javascript:;"
-                    >
-                      <div class="d-flex">
-                        <div
-                          class="w-100 d-flex align-items-start justify-content-between"
-                        >
-                          <div>
-                            <h6
-                              class="dropdown-header text-dark font-weight-bolder align-items-start p-0"
-                            >
-                              Desenvolvimento
-                            </h6>
-                            <span class="text-sm"
-                              >Veja as opções para seu crescimento</span
-                            >
-                          </div>
-                          <img
-                            :src="downArrow"
-                            alt="seta-para-baixo"
-                            class="arrow"
-                          />
-                        </div>
-                      </div>
-                    </a>
-                    <div class="dropdown-menu mt-0 py-3 px-2 mt-3 text-start">
-                      <RouterLink
-                        class="dropdown-item ps-3 border-radius-md mb-1"
-                        :to="{ name: 'navigation-navbars' }"
-                      >
-                        Cursos
-                      </RouterLink>
-                      <RouterLink
-                        class="dropdown-item ps-3 border-radius-md mb-1"
-                        :to="{ name: 'navigation-navtabs' }"
-                      >
-                        Workshops
-                      </RouterLink>
-                    </div>
-                  </li>
-
-                  <li
-                    class="nav-item dropdown dropdown-hover dropdown-subitem list-group-item border-0 p-0"
-                  >
-                    <a
-                      class="dropdown-item py-2 ps-3 border-radius-md"
-                      href="javascript:;"
-                    >
-                      <div class="d-flex">
-                        <div
-                          class="w-100 d-flex align-items-start justify-content-between"
-                        >
-                          <div>
-                            <h6
-                              class="dropdown-header text-dark font-weight-bolder align-items-start p-0"
-                            >
-                              Suporte ao Egresso
-                            </h6>
-                            <span class="text-sm"
-                              >Descubra formas de apoio e conexão</span
-                            >
-                          </div>
-                          <img
-                            :src="downArrow"
-                            alt="seta-para-baixo"
-                            class="arrow"
-                          />
-                        </div>
-                      </div>
-                    </a>
-                    <div class="dropdown-menu mt-0 py-3 px-2 mt-3 text-start">
-                      <RouterLink
-                        class="dropdown-item ps-3 border-radius-md mb-1"
-                        :to="{ name: 'el-avatars' }"
-                      >
-                        Auxílios e Bolsas
-                      </RouterLink>
-                      <RouterLink
-                        class="dropdown-item ps-3 border-radius-md mb-1"
-                        :to="{ name: 'el-badges' }"
-                      >
-                        Mentorias
-                      </RouterLink>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
+              Pesquisa de Egressos
+            </RouterLink>
           </li>
-
-          <li class="nav-item dropdown dropdown-hover mx-2">
-            <a
-              role="button"
-              class="nav-link ps-2 d-flex cursor-pointer align-items-center fs-4"
-              :class="getTextColor()"
-              id="dropdownMenuDocs"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
+          <!-- Oportunidades -->
+          <li class="nav-item">
+            <RouterLink
+              to="/oportunidades"
+              class="nav-link"
+              :class="isActive('/oportunidades') ? 'active' : ''"
             >
-              <i
-                class="material-icons me-2"
-                :class="['text-primary', getTextColor()]"
-                style="font-size: 2rem"
-              >
-                school
-              </i>
-              <span style="font-size: 1.25rem">Recursos para Egressos</span>
-              <img
-                :src="getArrowColor()"
-                alt="seta-para-baixo"
-                class="arrow ms-2 d-lg-block d-none"
-              />
-              <img
-                :src="getArrowColor()"
-                alt="seta-para-baixo"
-                class="arrow ms-1 d-lg-none d-block ms-auto"
-              />
-            </a>
-
-            <div
-              class="dropdown-menu dropdown-menu-end dropdown-menu-animation dropdown-md mt-0 mt-lg-3 p-3 border-radius-lg"
-              aria-labelledby="dropdownMenuDocs"
-            >
-              <div class="d-none d-lg-block">
-                <ul class="list-group text-start">
-                  <li class="nav-item list-group-item border-0 p-0">
-                    <a
-                      class="dropdown-item py-2 ps-3 border-radius-md"
-                      href="javascript:;"
-                    >
-                      <h6
-                        class="dropdown-header text-dark font-weight-bolder align-items-start p-0"
-                      >
-                        Introdução ao Portal
-                      </h6>
-                      <span class="text-sm"
-                        >Visão geral e orientações para egressos</span
-                      >
-                    </a>
-                  </li>
-                  <li class="nav-item list-group-item border-0 p-0">
-                    <a
-                      class="dropdown-item py-2 ps-3 border-radius-md"
-                      href="javascript:;"
-                    >
-                      <h6
-                        class="dropdown-header text-dark font-weight-bolder align-items-start p-0"
-                      >
-                        Oportunidades de Desenvolvimento
-                      </h6>
-                      <span class="text-sm"
-                        >Cursos, workshops e mentorias disponíveis</span
-                      >
-                    </a>
-                  </li>
-                  <li class="nav-item list-group-item border-0 p-0">
-                    <a
-                      class="dropdown-item py-2 ps-3 border-radius-md"
-                      href="javascript:;"
-                    >
-                      <h6
-                        class="dropdown-header text-dark font-weight-bolder align-items-start p-0"
-                      >
-                        Recursos e Serviços
-                      </h6>
-                      <span class="text-sm"
-                        >Apoio, bolsas e auxílios disponíveis para
-                        egressos</span
-                      >
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div class="row d-lg-none">
-                <div class="col-md-12 g-0 text-start">
-                  <a
-                    class="dropdown-item py-2 ps-3 border-radius-md"
-                    href="javascript:;"
-                  >
-                    <h6
-                      class="dropdown-header text-dark font-weight-bolder align-items-start p-0"
-                    >
-                      Introdução ao Portal
-                    </h6>
-                    <span class="text-sm"
-                      >Visão geral e orientações para egressos</span
-                    >
-                  </a>
-                  <a
-                    class="dropdown-item py-2 ps-3 border-radius-md"
-                    href="javascript:;"
-                  >
-                    <h6
-                      class="dropdown-header text-dark font-weight-bolder align-items-start p-0"
-                    >
-                      Oportunidades de Desenvolvimento
-                    </h6>
-                    <span class="text-sm"
-                      >Cursos, workshops e mentorias disponíveis</span
-                    >
-                  </a>
-                  <a
-                    class="dropdown-item py-2 ps-3 border-radius-md"
-                    href="javascript:;"
-                  >
-                    <h6
-                      class="dropdown-header text-dark font-weight-bolder align-items-start p-0"
-                    >
-                      Recursos e Serviços
-                    </h6>
-                    <span class="text-sm"
-                      >Apoio, bolsas e auxílios disponíveis para egressos</span
-                    >
-                  </a>
-                </div>
-              </div>
-            </div>
+              Oportunidades
+            </RouterLink>
           </li>
-          <li class="nav-item dropdown dropdown-hover mx-2">
-            <a
-              href="javascript:;"
-              class="nav-link d-flex cursor-pointer align-items-center fs-4"
+          <!-- Contatos -->
+          <li class="nav-item">
+            <RouterLink
+              to="/contatos"
+              class="nav-link"
+              :class="isActive('/contatos') ? 'active' : ''"
             >
-              <i
-                class="material-icons me-2"
-                :class="['text-primary', getTextColor()]"
-                style="font-size: 2rem"
-              >
-                person
-              </i>
-              <span style="font-size: 1.25rem">Minha Conta</span>
-            </a>
+              Contatos
+            </RouterLink>
+          </li>
+          <!-- Administrativo -->
+          <li class="nav-item">
+            <RouterLink
+              to="/administrativo"
+              class="nav-link"
+              :class="isActive('/administrativo') ? 'active' : ''"
+            >
+              Administrativo
+            </RouterLink>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 </template>
+
+<script setup>
+import { useRoute } from "vue-router";
+
+const route = useRoute();
+
+// Função para verificar se a rota atual está ativa
+const isActive = (targetRoute) => {
+  return route.path === targetRoute;
+};
+</script>
+
+<style scoped>
+/* Estilo do Navbar */
+.navbar {
+  background-color: #f8f9fa;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo da logo */
+.logo {
+  max-height: 80px; /* Aumentei o tamanho da imagem da logo */
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+/* Estilo dos links */
+.nav-link {
+  color: #003366;
+  font-weight: 500;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #0056b3;
+}
+
+.active {
+  color: #002244 !important;
+  border-bottom: 2px solid #002244;
+}
+
+/* Ajuste de espaçamento */
+.navbar-nav {
+  margin-right: 1rem;
+}
+
+.nav-item {
+  margin-left: 1rem;
+}
+
+/* Tornar o navbar estático e preencher a tela */
+.navbar-expand-lg {
+  width: 100%;
+}
+
+/* Para telas pequenas */
+@media (max-width: 992px) {
+  .navbar {
+    padding: 1rem;
+  }
+
+  .nav-link {
+    font-size: 1rem;
+  }
+
+  .logo {
+    max-height: 60px; /* Ajustei também para dispositivos menores */
+  }
+}
+</style>
