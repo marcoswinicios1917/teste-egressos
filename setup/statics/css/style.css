@@ -30,7 +30,6 @@ li {
 
 
 header {
-    background-color: #333;
     padding: 1em 0;
     border-bottom: 1px solid #ddd;
     justify-content: space-between;
@@ -104,18 +103,16 @@ header {
 .container {
     padding:1em;
     color: #2c2c2c;
-    border: 1px solid #fff;
 }
 
 .content {
     width: 90%;
     margin: 0 auto;
-    border: 1px solid #fff;
     padding: 2em;
 }
 
 .ini {
-	 color: #414141;
+	color: #414141;
     background-color: #E0E0DC;
     text-align: center;
     padding-top: 3em;
@@ -222,7 +219,7 @@ header {
 
 
 footer {
-    background-color: #333;
+    background-color: #084773;
     color: #fff;
     text-align: center;
     padding: 0;
