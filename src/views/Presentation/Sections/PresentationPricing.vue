@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
 import SimplePricingCard from "@/examples/cards/pricingCards/SimplePricingCard.vue";
 </script>
 <template>
@@ -120,4 +120,4 @@ import SimplePricingCard from "@/examples/cards/pricingCards/SimplePricingCard.v
       </div>
     </div>
   </section>
-</template>
+</template> -->

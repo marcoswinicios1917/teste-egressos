@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
 import ExampleCard from "../Components/ExampleCard.vue";
 import MaterialBadge from "../../../components/MaterialBadge.vue";
 
@@ -103,4 +103,4 @@ export default {
       </div>
     </div>
   </section>
-</template>
+</template> -->

@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
 import DefaultReviewCard from "@/examples/cards/reviewCards/DefaultReviewCard.vue";
 </script>
 <template>
@@ -85,4 +85,4 @@ import DefaultReviewCard from "@/examples/cards/reviewCards/DefaultReviewCard.vu
       </div>
     </div>
   </section>
-</template>
+</template> -->

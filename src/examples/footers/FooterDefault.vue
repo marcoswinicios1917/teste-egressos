@@ -1,184 +1,119 @@
-<script setup>
-import logoDark from "@/assets/img/logo-ct-dark.png";
-defineProps({
-  brand: {
-    type: Object,
-    name: String,
-    logo: String,
-    route: "",
-    default: () => ({
-      name: "Material Kit 2",
-      logo: logoDark,
-      route: "/"
-    })
-  },
-  socials: {
-    type: Array,
-    icon: String,
-    link: String,
-    default: () => [
-      {
-        icon: '<i class="fab fa-facebook text-lg opacity-8"></i>',
-        link: "https://www.facebook.com/CreativeTim/"
-      },
-      {
-        icon: '<i class="fab fa-twitter text-lg opacity-8"></i>',
-        link: "https://twitter.com/creativetim"
-      },
-      {
-        icon: '<i class="fab fa-dribbble text-lg opacity-8"></i>',
-        link: "https://dribbble.com/creativetim"
-      },
-      {
-        icon: '<i class="fab fa-github text-lg opacity-8"></i>',
-        link: "https://github.com/creativetimofficial"
-      },
-      {
-        icon: '<i class="fab fa-youtube text-lg opacity-8"></i>',
-        link: "https://www.youtube.com/channel/UCVyTG4sCw-rOvB9oHkzZD1w"
-      }
-    ]
-  },
-  menus: {
-    type: Array,
-    name: String,
-    items: {
-      type: Array,
-      name: String,
-      href: String
-    },
-    default: () => [
-      {
-        name: "company",
-        items: [
-          {
-            name: "about us",
-            href: "https://www.creative-tim.com/presentation"
-          },
-          {
-            name: "freebies",
-            href: "https://www.creative-tim.com/templates/free"
-          },
-          {
-            name: "premium tools",
-            href: "https://www.creative-tim.com/templates/premium"
-          },
-          { name: "blog", href: "https://www.creative-tim.com/blog" }
-        ]
-      },
-      {
-        name: "resources",
-        items: [
-          { name: "illustrations", href: "https://iradesign.io/" },
-          {
-            name: "bits & snippets",
-            href: "https://www.creative-tim.com/bits"
-          },
-          {
-            name: "affiliate program",
-            href: "https://www.creative-tim.com/affiliates/new"
-          }
-        ]
-      },
-      {
-        name: "help & support",
-        items: [
-          {
-            name: "contact us",
-            href: "https://www.creative-tim.com/contact-us"
-          },
-          {
-            name: "knowledge center",
-            href: "https://www.creative-tim.com/knowledge-center"
-          },
-          {
-            name: "custom development",
-            href: "https://services.creative-tim.com/"
-          },
-          {
-            name: "sponsorships",
-            href: "https://www.creative-tim.com/sponsorships"
-          }
-        ]
-      },
-      {
-        name: "legal",
-        items: [
-          {
-            name: "terms & conditions",
-            href: "https://www.creative-tim.com/terms"
-          },
-          {
-            name: "privacy policy",
-            href: "https://www.creative-tim.com/privacy"
-          },
-          {
-            name: "licenses (EULA)",
-            href: "https://www.creative-tim.com/license"
-          }
-        ]
-      }
-    ]
-  }
-});
-</script>
 <template>
-  <footer class="footer pt-5 mt-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3 mb-4 ms-auto">
-          <div>
-            <a :href="brand.route">
-              <img :src="brand.logo" class="mb-3 footer-logo" alt="main_logo" />
-            </a>
-            <h6 class="font-weight-bolder mb-4">{{ brand.name }}</h6>
-          </div>
-          <div>
-            <ul class="d-flex flex-row ms-n3 nav">
-              <li
-                class="nav-item"
-                v-for="{ icon, link } of socials"
-                :key="link"
-              >
-                <a
-                  class="nav-link pe-1"
-                  :href="link"
-                  target="_blank"
-                  v-html="icon"
-                >
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div
-          class="col-md-2 col-sm-6 col-6 mb-4"
-          v-for="{ name, items } of menus"
-          :key="name"
-        >
-          <h6 class="text-sm">{{ name }}</h6>
-          <ul class="flex-column ms-n3 nav">
-            <li class="nav-item" v-for="item of items" :key="item.name">
-              <a class="nav-link" :href="item.href" target="_blank">
-                {{ item.name }}
-              </a>
-            </li>
-          </ul>
-        </div>
+  <footer class="footer-custom py-5">
+    <div class="container text-center">
+      <!-- Imagem da Assinatura -->
+      <div class="footer-image-container mb-3">
+        <img
+          src="/src/assets/img/assinaturaUFDPar.png"
+          alt="Assinatura UFDPar"
+          class="footer-image"
+        />
+      </div>
 
-        <div class="col-12">
-          <div class="text-center">
-            <p class="text-dark my-4 text-sm font-weight-normal">
-              All rights reserved. Copyright ©
-              {{ new Date().getFullYear() }}
-              Material Kit by
-              <a href="https://www.creative-tim.com" target="_blank"
-                >Creative Tim</a
-              >.
-            </p>
-          </div>
-        </div>
+      <!-- Linha dourada preenchendo toda a largura -->
+      <div class="line-container">
+        <hr class="elegant-line" />
+      </div>
+
+      <!-- Copyright -->
+      <div class="footer-text-container mt-4">
+        <p class="mb-0 text-secondary footer-text">
+          Copyright © {{ new Date().getFullYear() }} Portal do Egresso da
+          Universidade Federal do Delta do Parnaíba.
+        </p>
       </div>
     </div>
   </footer>
 </template>
+
+<script setup>
+// Nenhuma lógica JavaScript necessária.
+</script>
+
+<style scoped>
+.footer-custom {
+  background-color: #003366; /* Azul forte */
+  padding: 2rem 0;
+  color: white;
+  position: relative; /* Para permitir o posicionamento absoluto dos ornamentos */
+}
+
+/* Estilo para a imagem de assinatura */
+.footer-image-container {
+  max-width: 250px; /* Tamanho máximo da imagem ajustado */
+  margin: 0 auto; /* Centraliza a imagem */
+}
+
+.footer-image {
+  max-width: 100%; /* Garante que a imagem não ultrapasse o container */
+  border: none; /* Removendo a borda */
+  border-radius: 0; /* Sem bordas arredondadas */
+  box-shadow: none; /* Removendo a sombra */
+  transition: transform 0.3s ease; /* Transição suave para efeito de hover */
+}
+
+/* Efeito de hover na imagem */
+.footer-image:hover {
+  transform: scale(1.05); /* Aumenta levemente a imagem ao passar o mouse */
+}
+
+/* Estilo do container da linha */
+.line-container {
+  margin: 2rem 0; /* Remover margem lateral */
+  width: 100%; /* Faz a linha ocupar toda a largura da tela */
+}
+
+/* Linha dourada com design aprimorado */
+.elegant-line {
+  border: none;
+  height: 6px; /* Aumenta a altura da linha para mais presença */
+  background-image: linear-gradient(
+    to right,
+    #ffd700,
+    /* Dourado vibrante */ #ffcc00,
+    /* Dourado mais claro */ #ffd700 /* Dourado vibrante novamente */
+  ); /* Gradiente dourado */
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); /* Sombra suave para efeito 3D */
+  border-radius: 5px; /* Bordas arredondadas */
+  width: 100%; /* Largura da linha ajustada para 100% */
+}
+
+/* Pequeno ornamento decorativo nas pontas da linha */
+.elegant-line::before,
+.elegant-line::after {
+  content: "";
+  width: 14px; /* Aumenta o tamanho dos ornamentos */
+  height: 14px;
+  background-color: #ffd700; /* Dourado sólido */
+  border-radius: 50%; /* Ornamento circular nas extremidades */
+  position: absolute;
+  top: -7px; /* Ajusta a posição do ornamento */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para profundidade */
+}
+
+.elegant-line::before {
+  left: -10px; /* Alinhamento do ornamento esquerdo */
+}
+
+.elegant-line::after {
+  right: -10px; /* Alinhamento do ornamento direito */
+}
+
+/* Estilo do texto copyright */
+.footer-text {
+  font-size: 1rem; /* Aumenta o tamanho da fonte para maior legibilidade */
+  line-height: 1.5; /* Aumenta o espaço entre linhas */
+}
+
+/* Ajustes para a cor do texto */
+.text-secondary {
+  color: #e0e0e0; /* Tom de cinza suave */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .footer-text {
+    font-size: 0.9rem; /* Tamanho da fonte reduzido em telas menores */
+  }
+}
+</style>
