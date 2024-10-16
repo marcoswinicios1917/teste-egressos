@@ -1,8 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container-fluid">
-      <!-- Logo do site -->
-      <RouterLink to="/" class="navbar-brand ms-3">
+      <RouterLink to="/" class="navbar-brand">
         <img
           src="@/assets/img/egressosufdpar.png"
           alt="Logo Egressos UFDPar"
@@ -24,7 +23,6 @@
 
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
-          <!-- Botão Home -->
           <li class="nav-item">
             <RouterLink
               to="/"
@@ -34,44 +32,57 @@
               Home
             </RouterLink>
           </li>
-          <!-- Pesquisa de Egressos -->
           <li class="nav-item">
             <RouterLink
-              to="/egressos"
+              to="/sections/page-sections/page-headers"
               class="nav-link"
-              :class="isActive('/egressos') ? 'active' : ''"
+              :class="
+                isActive('/sections/page-sections/page-headers') ? 'active' : ''
+              "
             >
               Pesquisa de Egressos
             </RouterLink>
           </li>
-          <!-- Oportunidades -->
           <li class="nav-item">
             <RouterLink
-              to="/oportunidades"
+              to="/sections/attention-catchers/tooltips-popovers"
               class="nav-link"
-              :class="isActive('/oportunidades') ? 'active' : ''"
+              :class="
+                isActive('/sections/attention-catchers/tooltips-popovers')
+                  ? 'active'
+                  : ''
+              "
             >
               Oportunidades
             </RouterLink>
           </li>
-          <!-- Contatos -->
           <li class="nav-item">
             <RouterLink
-              to="/contatos"
+              to="/sections/navigation/navbars"
               class="nav-link"
-              :class="isActive('/contatos') ? 'active' : ''"
+              :class="isActive('/sections/navigation/navbars') ? 'active' : ''"
             >
               Contatos
             </RouterLink>
           </li>
-          <!-- Administrativo -->
           <li class="nav-item">
             <RouterLink
-              to="/administrativo"
+              to="/sections/page-sections/features"
               class="nav-link"
-              :class="isActive('/administrativo') ? 'active' : ''"
+              :class="
+                isActive('/sections/page-sections/features') ? 'active' : ''
+              "
             >
               Administrativo
+            </RouterLink>
+          </li>
+          <li class="nav-item">
+            <RouterLink
+              to="/pages/landing-pages/basic"
+              class="nav-link"
+              :class="isActive('/pages/landing-pages/basic') ? 'active' : ''"
+            >
+              Entrar
             </RouterLink>
           </li>
         </ul>
@@ -85,7 +96,6 @@ import { useRoute } from "vue-router";
 
 const route = useRoute();
 
-// Função para verificar se a rota atual está ativa
 const isActive = (targetRoute) => {
   return route.path === targetRoute;
 };
@@ -94,66 +104,63 @@ const isActive = (targetRoute) => {
 <style scoped>
 /* Estilo do Navbar */
 .navbar {
-  background-color: #f8f9fa;
-  padding: 1rem 2rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff; /* Usando um fundo branco para um visual clean */
+  padding: 0.5rem 1rem; /* Mantendo um padding fino */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sutil sombra para dar profundidade */
 }
 
 /* Estilo da logo */
 .logo {
-  max-height: 80px; /* Aumentei o tamanho da imagem da logo */
-  transition: transform 0.3s ease;
+  max-height: 50px; /* Reduzindo a altura da logo */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .logo:hover {
-  transform: scale(1.1);
+  transform: scale(1.05); /* Leve aumento ao passar o mouse */
 }
 
 /* Estilo dos links */
 .nav-link {
-  color: #003366;
+  color: #007bff; /* Usando uma cor azul suave */
   font-weight: 500;
-  font-size: 1.1rem;
-  padding: 0.5rem 1rem;
-  text-transform: uppercase;
-  transition: color 0.3s ease;
+  font-size: 1rem; /* Tamanho de fonte consistente */
+  padding: 0.25rem 0.75rem; /* Padding lateral para um toque mais espaçado */
+  text-transform: uppercase; /* Texto em maiúsculas */
+  transition: color 0.3s ease, transform 0.3s ease; /* Suavização de transições */
+  text-decoration: none; /* Removendo sublinhado */
 }
 
 .nav-link:hover {
-  color: #0056b3;
+  color: #0056b3; /* Tom mais escuro ao passar o mouse */
+  transform: translateY(-2px); /* Efeito de levitar ao passar o mouse */
 }
 
 .active {
-  color: #002244 !important;
-  border-bottom: 2px solid #002244;
+  color: #0056b3 !important; /* Cor ativa */
+  font-weight: bold; /* Destaque para o link ativo */
 }
 
 /* Ajuste de espaçamento */
 .navbar-nav {
-  margin-right: 1rem;
+  margin-right: 1rem; /* Espaçamento no final da lista */
 }
 
 .nav-item {
-  margin-left: 1rem;
-}
-
-/* Tornar o navbar estático e preencher a tela */
-.navbar-expand-lg {
-  width: 100%;
+  margin-left: 1rem; /* Espaçamento entre os itens */
 }
 
 /* Para telas pequenas */
 @media (max-width: 992px) {
   .navbar {
-    padding: 1rem;
+    padding: 0.5rem; /* Ajustando o padding em telas pequenas */
   }
 
   .nav-link {
-    font-size: 1rem;
+    font-size: 0.9rem; /* Tamanho da fonte em telas pequenas */
   }
 
   .logo {
-    max-height: 60px; /* Ajustei também para dispositivos menores */
+    max-height: 40px; /* Reduzindo a logo em telas pequenas */
   }
 }
 </style>
