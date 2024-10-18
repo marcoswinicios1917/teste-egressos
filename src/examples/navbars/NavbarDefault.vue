@@ -22,7 +22,8 @@
       </button>
 
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav ms-auto">
+          <!-- Adicionado 'ms-auto' para alinhar à direita -->
           <li class="nav-item">
             <RouterLink
               to="/"
@@ -104,14 +105,14 @@ const isActive = (targetRoute) => {
 <style scoped>
 /* Estilo do Navbar */
 .navbar {
-  background-color: #ffffff; /* Usando um fundo branco para um visual clean */
-  padding: 0.5rem 1rem; /* Mantendo um padding fino */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sutil sombra para dar profundidade */
+  background-color: #ffffff; /* Fundo branco */
+  padding: 0.5rem 1rem; /* Padding fino */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
 /* Estilo da logo */
 .logo {
-  max-height: 50px; /* Reduzindo a altura da logo */
+  max-height: 150px; /* Altura máxima da logo */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -121,18 +122,18 @@ const isActive = (targetRoute) => {
 
 /* Estilo dos links */
 .nav-link {
-  color: #007bff; /* Usando uma cor azul suave */
+  color: #007bff; /* Azul suave */
   font-weight: 500;
-  font-size: 1rem; /* Tamanho de fonte consistente */
-  padding: 0.25rem 0.75rem; /* Padding lateral para um toque mais espaçado */
+  font-size: 1.3rem !important; /* Aumenta o tamanho da fonte */
+  padding: 1rem 1.8rem !important; /* Aumenta o padding para tornar os botões maiores */
   text-transform: uppercase; /* Texto em maiúsculas */
-  transition: color 0.3s ease, transform 0.3s ease; /* Suavização de transições */
+  transition: color 0.1s ease, transform 0.1s ease; /* Suavização de transições */
   text-decoration: none; /* Removendo sublinhado */
 }
 
 .nav-link:hover {
   color: #0056b3; /* Tom mais escuro ao passar o mouse */
-  transform: translateY(-2px); /* Efeito de levitar ao passar o mouse */
+  transform: translateY(-3px); /* Efeito de levitar ao passar o mouse */
 }
 
 .active {
@@ -140,13 +141,14 @@ const isActive = (targetRoute) => {
   font-weight: bold; /* Destaque para o link ativo */
 }
 
-/* Ajuste de espaçamento */
+/* Alinhamento e espaçamento */
 .navbar-nav {
-  margin-right: 1rem; /* Espaçamento no final da lista */
+  margin-right: 0rem; /* Espaçamento no final da lista */
+  margin-left: auto; /* Empurrar para a direita */
 }
 
 .nav-item {
-  margin-left: 1rem; /* Espaçamento entre os itens */
+  margin-left: -1.5rem; /* Espaçamento entre os itens */
 }
 
 /* Para telas pequenas */

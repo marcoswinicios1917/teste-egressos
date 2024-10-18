@@ -57,17 +57,17 @@ import vueMkHeader from "@/assets/img/vue-mk-header.jpg";
 
 <style scoped>
 .container-fluid {
-  padding-top: 1.4rem;
+  padding-top: 1.5rem;
   padding-bottom: 0rem;
 }
 
 .page-header {
-  height: 60vh; /* Ajusta a altura do cabeçalho para 100% da viewport */
+  height: 60vh; /* Ajusta a altura do cabeçalho para 60% da viewport */
   background-size: contain; /* Faz a imagem aparecer completa */
-  background-position: top; /* Alinha a imagem no topo */
+  background-position: center; /* Alinha a imagem no centro */
   background-repeat: no-repeat; /* Impede que a imagem se repita */
-  margin-top: 60px; /* Move a imagem um pouco para baixo, alinhando com o Navbar */
-  background-color: transparent; /* Fundo transparente */
+  margin-top: 120px; /* Move a imagem um pouco para baixo, alinhando com o Navbar */
+  background-color: #e0e0e0; /* Fundo cinza claro e elegante */
 }
 
 .content-section {
