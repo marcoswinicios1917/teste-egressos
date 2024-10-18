@@ -1,8 +1,8 @@
 <script setup>
-import { onMounted, onUnmounted } from "vue";
+// import { onMounted, onUnmounted } from "vue";
 
 // Example components
-import NavbarDefault from "../..//examples/navbars/NavbarDefault.vue";
+import NavbarDefault from "../../examples/navbars/NavbarDefault.vue";
 import DefaultFooter from "../../examples/footers/FooterDefault.vue";
 import Header from "../../examples/Header.vue";
 import PresentationCounter from "./Sections/PresentationCounter.vue";
@@ -16,15 +16,15 @@ import PresentationInformation from "./Sections/PresentationInformation.vue";
 import vueMkHeader from "@/assets/img/vue-mk-header.jpg";
 
 // Hooks
-const body = document.getElementsByTagName("body")[0];
-onMounted(() => {
-  body.classList.add("presentation-page");
-  body.classList.add("bg-gray-200");
-});
-onUnmounted(() => {
-  body.classList.remove("presentation-page");
-  body.classList.remove("bg-gray-200");
-});
+// const body = document.getElementsByTagName("body")[0];
+// onMounted(() => {
+//   body.classList.add("presentation-page");
+//   body.classList.add("bg-gray-200");
+// });
+// onUnmounted(() => {
+//   body.classList.remove("presentation-page");
+//   body.classList.remove("bg-gray-200");
+// });
 </script>
 
 <template>
@@ -57,37 +57,35 @@ onUnmounted(() => {
 
 <style scoped>
 .container-fluid {
-  padding: 0;
+  padding-top: 1.4rem;
+  padding-bottom: 0rem;
 }
 
 .page-header {
-  height: 90vh; /* Ajusta a altura do cabeçalho */
-  background-size: cover;
-  background-position: center;
-  margin-top: -20vh; /* Move a imagem para cima */
+  height: 60vh; /* Ajusta a altura do cabeçalho para 100% da viewport */
+  background-size: contain; /* Faz a imagem aparecer completa */
+  background-position: top; /* Alinha a imagem no topo */
+  background-repeat: no-repeat; /* Impede que a imagem se repita */
+  margin-top: 60px; /* Move a imagem um pouco para baixo, alinhando com o Navbar */
+  background-color: transparent; /* Fundo transparente */
 }
 
 .content-section {
-  padding: 2rem 1rem; /* Adiciona um espaçamento interno para a seção de conteúdo */
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.9
-  ); /* Fundo claro para destacar o conteúdo */
-  border-radius: 0; /* Remove bordas arredondadas */
+  padding: 0rem 0rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 0;
 }
 
 @media (max-width: 768px) {
   .page-header {
-    height: 70vh; /* Altura do cabeçalho para telas menores */
-    margin-top: -10vh; /* Move a imagem para cima em telas menores */
+    height: 100vh; /* Mantém a altura total em telas menores */
+    background-size: contain;
   }
 }
 
 @media (max-width: 576px) {
   .content-section {
-    padding: 1rem; /* Ajusta o padding em telas menores */
+    padding: 1rem;
   }
 }
 </style>

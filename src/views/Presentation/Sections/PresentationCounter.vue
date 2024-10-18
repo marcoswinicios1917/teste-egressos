@@ -125,14 +125,15 @@ const buttons = ref([
   text-transform: uppercase;
   color: #ffffff; /* Texto em branco para contraste */
   background-color: #003366; /* Azul escuro */
-  border: none;
-  border-radius: 8px; /* Bordas mais retas para um visual mais moderno */
+  border: groove;
+  border: 2px dashed;
+  border-radius: 35px; /* Bordas mais retas para um visual mais moderno */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Sombra suave para dar profundidade */
   transition: transform 0.2s ease, box-shadow 0.2s ease; /* Transição suave para efeitos de hover */
 }
 
 .btn-dark-blue:hover {
-  transform: translateY(-5px); /* Eleva levemente o botão ao passar o mouse */
+  transform: translateY(-8px); /* Eleva levemente o botão ao passar o mouse */
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Aumenta a sombra para um efeito de elevação */
   background-color: #002244; /* Azul mais escuro ao passar o mouse */
 }
