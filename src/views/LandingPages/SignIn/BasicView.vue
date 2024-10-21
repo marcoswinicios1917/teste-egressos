@@ -9,6 +9,7 @@ const email = ref("");
 const password = ref("");
 const emailError = ref("");
 const passwordError = ref("");
+const showPassword = ref(false); // Adiciona o estado para mostrar a senha
 const router = useRouter();
 
 onMounted(() => {
@@ -65,7 +66,7 @@ function handleLogin() {
                 <div class="input-wrapper">
                   <input
                     v-model="password"
-                    type="password"
+                    :type="showPassword ? 'text' : 'password'"
                     id="password"
                     class="form-control"
                     placeholder=" "
@@ -79,6 +80,19 @@ function handleLogin() {
                     id="passwordError"
                     >{{ passwordError }}</span
                   >
+                  <i
+                    class="fas"
+                    :class="showPassword ? 'fa-eye-slash' : 'fa-eye'"
+                    @click="showPassword = !showPassword"
+                    style="
+                      cursor: pointer;
+                      position: absolute;
+                      right: 15px;
+                      top: 38px;
+                    "
+                    title="Mostrar Senha"
+                  >
+                  </i>
                 </div>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary login-button">
