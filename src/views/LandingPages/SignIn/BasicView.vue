@@ -7,43 +7,46 @@ import setMaterialInput from "@/assets/js/material-input";
 
 const email = ref("");
 const password = ref("");
-const rememberMe = ref(false);
+const emailError = ref("");
+const passwordError = ref("");
 const router = useRouter();
 
-// Recupera email e senha do local storage ao montar
 onMounted(() => {
   email.value = localStorage.getItem("savedEmail") || "";
   password.value = localStorage.getItem("savedPassword") || "";
   setMaterialInput();
 });
 
-// Função para lidar com o login
+function validateForm() {
+  emailError.value = !email.value ? "Email é obrigatório" : "";
+  passwordError.value = !password.value ? "Senha é obrigatória" : "";
+  return !emailError.value && !passwordError.value;
+}
+
 function handleLogin() {
-  if (rememberMe.value) {
-    localStorage.setItem("savedEmail", email.value);
-    localStorage.setItem("savedPassword", password.value);
-  } else {
-    localStorage.removeItem("savedEmail");
-    localStorage.removeItem("savedPassword");
+  if (validateForm()) {
+    router.push({ name: "dashboard" });
   }
-  // Redireciona para a página após o login
-  router.push({ name: "dashboard" });
 }
 </script>
 
 <template>
   <DefaultNavbar transparent />
-  <div>
+  <div class="page-wrapper">
     <Header>
       <div class="page-header">
         <div
           class="container my-auto d-flex flex-column align-items-center justify-content-center"
         >
           <div class="login-container">
-            <h4 class="font-weight-bolder mt-2 mb-0">Portal do Egresso</h4>
-            <p class="mb-4 text-center">Acesse sua conta</p>
+            <h4 class="portal-title mt-2 mb-0">Portal do Egresso</h4>
+            <p class="access-text mb-4 text-center">Acesse sua conta</p>
             <div class="card-body">
-              <form role="form" class="text-start">
+              <form
+                role="form"
+                class="text-start"
+                @submit.prevent="handleLogin"
+              >
                 <div class="input-wrapper">
                   <input
                     v-model="email"
@@ -52,8 +55,12 @@ function handleLogin() {
                     class="form-control"
                     placeholder=" "
                     required
+                    aria-describedby="emailError"
                   />
                   <label for="email">Email</label>
+                  <span v-if="emailError" class="error-text" id="emailError">{{
+                    emailError
+                  }}</span>
                 </div>
                 <div class="input-wrapper">
                   <input
@@ -63,35 +70,26 @@ function handleLogin() {
                     class="form-control"
                     placeholder=" "
                     required
+                    aria-describedby="passwordError"
                   />
                   <label for="password">Senha</label>
-                </div>
-                <div class="d-flex align-items-center mb-4">
-                  <input
-                    v-model="rememberMe"
-                    class="form-check-input"
-                    type="checkbox"
-                    id="rememberMe"
-                  />
-                  <label class="form-check-label ms-2" for="rememberMe">
-                    <span class="remember-me-text">Mantenha-me conectado</span>
-                  </label>
+                  <span
+                    v-if="passwordError"
+                    class="error-text"
+                    id="passwordError"
+                    >{{ passwordError }}</span
+                  >
                 </div>
                 <div class="text-center">
-                  <button
-                    type="button"
-                    @click="handleLogin"
-                    class="btn btn-primary"
-                  >
+                  <button type="submit" class="btn btn-primary login-button">
                     Entrar
                   </button>
-                  <label class="form-check-label ms-2" for="rememberMe">
-                    <span class="remember-me-text">Mantenha-me conectado</span>
-                  </label>
                 </div>
                 <p class="mt-4 text-sm text-center">
                   Não tem uma conta?
-                  <a href="#" class="text-blue font-weight-bold">Cadastrar</a>
+                  <a href="#" class="text-highlight font-weight-bold"
+                    >Cadastrar</a
+                  >
                 </p>
               </form>
             </div>
@@ -123,16 +121,28 @@ function handleLogin() {
 </template>
 
 <style scoped>
+/* Ajustes gerais da página */
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
 .page-header {
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background-image: url("@/assets/img/vue-mk-header.jpg");
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
-  background-color: #e0e0e0;
+  height: 60vh; /* Ajusta a altura do cabeçalho para 60% da viewport */
+  background-size: contain; /* Faz a imagem aparecer completa */
+  background-position: center; /* Alinha a imagem no centro */
+  background-repeat: no-repeat; /* Impede que a imagem se repita */
+  margin-top: 145px; /* Move a imagem um pouco para baixo, alinhando com o Navbar */
+  background-color: #e0e0e0; /* Fundo cinza claro e elegante */
 }
 
 .container {
@@ -140,45 +150,89 @@ function handleLogin() {
 }
 
 .login-container {
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-  max-width: 400px;
-  width: 90%;
-  position: relative;
-  overflow: hidden;
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-h4 {
-  color: #003366;
-  margin-bottom: 1rem;
-  font-size: 2rem;
+  background-color: rgba(255, 255, 255, 0.92);
+  padding: 50px;
+  border-radius: 30px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  max-width: 420px;
+  width: 100%;
   text-align: center;
 }
 
-.btn-primary {
+.portal-title {
+  color: #003366;
+  font-weight: bold;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.access-text {
+  color: #666666;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn-primary.login-button {
   background-color: #00509e;
   color: white;
-  padding: 12px 20px;
+  padding: 12px 25px;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   font-weight: bold;
-  transition: background-color 0.3s, transform 0.3s;
-  width: 100%;
+  transition: all 0.3s ease;
   font-size: 1.1rem;
+  width: 100%;
 }
 
-.btn-primary:hover {
-  background-color: #003366;
-  transform: scale(1.05);
+.btn-primary.login-button:hover {
+  background-color: #004080;
+  transform: scale(1.03);
 }
 
+/* Estilo dos inputs */
+.input-wrapper {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  border: 2px solid #00509e;
+  border-radius: 8px;
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  background-color: #00509e;
+  color: white;
+}
+
+label {
+  position: absolute;
+  left: 15px;
+  top: -12px;
+  color: #00509e;
+  background-color: #fff;
+  padding: 0 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+/* Texto de erro */
+.error-text {
+  color: #ff4c4c;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  text-align: left;
+}
+
+/* Rodapé */
 .footer-custom {
   background-color: #003366;
-  padding: 2rem 0;
   color: white;
+  padding: 2rem 0;
 }
 
 .footer-image-container {
@@ -191,103 +245,17 @@ h4 {
 }
 
 .line-container {
-  margin: 2rem 0;
-  width: 100%;
+  margin: 0rem;
 }
 
 .elegant-line {
   border: none;
-  height: 6px;
-  background-image: linear-gradient(to right, #ffd700, #ffcc00, #ffd700);
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+  height: 5px;
+  background: linear-gradient(90deg, #ffd700, #ffcc00, #ffd700);
   border-radius: 5px;
-  width: 100%;
 }
 
 .footer-text {
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-.text-secondary {
-  color: #e0e0e0;
-}
-
-.text-blue {
-  color: #00509e;
-}
-
-.input-wrapper {
-  position: relative;
-  margin-bottom: 20px;
-}
-
-input {
-  width: 100%;
-  padding: 12px; /* Aumentar o padding para melhor espaçamento */
-  border: 2px solid #00509e; /* Adiciona borda ao input */
-  border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.9);
-  transition: all 0.3s ease;
-  outline: none;
-}
-
-label {
-  position: absolute;
-  left: 10px;
-  top: -8px; /* Ajuste para cima para que o label fique acima */
-  color: #00509e;
-  transition: all 0.3s ease;
-  pointer-events: none;
-  font-weight: bold;
-  font-size: 14px; /* Tamanho do texto do label */
-}
-
-input:focus {
-  background-color: rgba(255, 255, 255, 1);
-  border-color: #003366; /* Muda a cor da borda ao focar */
-}
-
-input:focus + label,
-input:not(:placeholder-shown) + label {
-  top: -20px; /* Mantém o label acima do input */
-  left: 10px;
-  font-size: 12px;
-  color: #003366;
-}
-
-.remember-me-text {
-  font-size: 14px;
-  color: #00509e; /* Cor do texto "lembrar de mim" */
-  transition: color 0.3s;
-}
-
-.remember-me-text:hover {
-  color: #003366; /* Muda a cor ao passar o mouse */
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (max-width: 768px) {
-  .footer-text {
-    font-size: 0.9rem;
-  }
-
-  .login-container {
-    padding: 30px;
-  }
-
-  h4 {
-    font-size: 1.5rem;
-  }
+  font-size: 0.9rem;
 }
 </style>
