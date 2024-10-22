@@ -63,7 +63,7 @@ const copy = async (event) => {
       alert.style.transform = "translate3d(0px, 20px, 0px)";
       alert.style.setProperty("opacity", "1", "important");
     }, 100);
-    alert.innerHTML = "Code successfully copied!";
+    alert.innerHTML = "Código copiado com sucesso!";
     el.parentElement.appendChild(alert);
     setTimeout(function () {
       alert.style.transform = "translate3d(0px, 0px, 0px)";
@@ -72,7 +72,6 @@ const copy = async (event) => {
     setTimeout(function () {
       el.parentElement.querySelector(".alert").remove();
     }, 2500);
-
   } catch (e) {
     console.error(e);
   }
@@ -103,7 +102,7 @@ const highlighter = (code) => {
                   role="tab"
                   aria-selected="true"
                 >
-                  <i class="fas fa-desktop text-sm me-2"></i> Preview
+                  <i class="fas fa-search text-sm me-2"></i> Pesquisar
                 </a>
               </li>
               <li class="nav-item">
@@ -114,7 +113,7 @@ const highlighter = (code) => {
                   role="tab"
                   aria-selected="false"
                 >
-                  <i class="fas fa-code text-sm me-2"></i> Code
+                  <i class="fas fa-edit text-sm me-2"></i> Cadastrar
                 </a>
               </li>
             </ul>
@@ -134,7 +133,7 @@ const highlighter = (code) => {
             class="btn btn-sm bg-gradient-dark position-absolute end-4 mt-3 z-index-3"
             @click="copy($event)"
             href="javascript:;"
-            ><i class="fas fa-copy text-sm me-1"></i> Copy</a
+            ><i class="fas fa-copy text-sm me-1"></i> Copiar</a
           >
           <figure class="highlight">
             <PrismEditor
@@ -150,18 +149,17 @@ const highlighter = (code) => {
     </div>
   </div>
 </template>
+
 <style>
 .my-editor {
-  /* we dont use `language-` classes anymore so thats why we need to add background and text color manually */
   color: black;
-  /* you must provide font-family font-size line-height. Example: */
   font-family: Consolas, Fira Mono, Menlo, Courier, monospace;
   font-size: 1em;
   line-height: 1.5;
   padding: 5px;
   tab-size: 4;
 }
-/* optional class for removing the outline */
+
 .prism-editor__textarea:focus {
   outline: none;
 }
