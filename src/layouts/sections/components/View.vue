@@ -253,7 +253,7 @@ export default {
     },
     title: {
       type: String,
-      default: "Formulário de Cadastro",
+      default: "",
     },
     height: {
       type: String,

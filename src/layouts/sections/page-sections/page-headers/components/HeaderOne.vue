@@ -134,22 +134,21 @@ const selectedYear = ref(null);
         <h2 class="text-center mb-4">Resultados da Pesquisa</h2>
         <div class="row">
           <!-- Simulação de Resultados -->
-          <div class="col-md-4" v-for="n in 6" :key="n">
-            <div class="card mb-4 shadow-sm bg-white">
-              <img
-                src="https://via.placeholder.com/400x300"
-                class="card-img-top"
-                alt="Foto do Egresso"
-              />
+          <div
+            class="col-6 col-sm-4 col-md-3 col-lg-2"
+            v-for="n in 12"
+            :key="n"
+          >
+            <div class="card mb-4 shadow-sm bg-white text-center small-card">
               <div class="card-body">
-                <h5 class="card-title">Egresso {{ n }}</h5>
+                <h6 class="card-title">Egresso {{ n }}</h6>
                 <p class="card-text">
                   <strong>Curso:</strong> {{ courses[n % courses.length]
                   }}<br />
                   <strong>Ano de Conclusão:</strong> 20{{ n + 10 }}<br />
                   <strong>Status:</strong> {{ statuses[n % statuses.length] }}
                 </p>
-                <a href="#" class="btn btn-primary">Ver Perfil</a>
+                <a href="#" class="btn btn-primary btn-sm">Ver Perfil</a>
               </div>
             </div>
           </div>
@@ -189,6 +188,12 @@ const selectedYear = ref(null);
 
 .search-results .card {
   transition: transform 0.2s;
+  border-radius: 8px;
+}
+
+.search-results .small-card {
+  width: 100%;
+  padding: 10px;
 }
 
 .search-results .card:hover {
@@ -197,7 +202,7 @@ const selectedYear = ref(null);
 }
 
 .search-results .card-title {
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: #0d47a1;
 }
 
