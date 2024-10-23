@@ -26,14 +26,15 @@
       <!-- Links do Navbar -->
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item" v-for="nav in navItems" :key="nav.name">
+          <li class="nav-item" v-for="nav in navItems" :key="nav.id">
             <a
               :href="nav.link"
               class="nav-link"
               :class="{ active: activeNav === nav.id }"
               @click="setActiveNav(nav.id)"
-              >{{ nav.name }}</a
             >
+              {{ nav.name }}
+            </a>
           </li>
         </ul>
       </div>
@@ -163,6 +164,15 @@ export default {
               title: "Analista de Dados",
               description: "Analista de Dados com habilidades em SQL e Python.",
             },
+            {
+              title: "Desenvolvedor Backend",
+              description:
+                "Vaga para desenvolvedor backend com experiência em Node.js.",
+            },
+            {
+              title: "Gerente de Projetos",
+              description: "Gerente de Projetos para atuar em tecnologia.",
+            },
           ],
           icon: "bi bi-briefcase",
         },
@@ -176,7 +186,18 @@ export default {
               title: "Estágio em Marketing",
               description: "Estágio em Marketing Digital.",
             },
-            { title: "Estágio em TI", description: "Suporte técnico e redes." },
+            {
+              title: "Estágio em TI",
+              description: "Suporte técnico e redes.",
+            },
+            {
+              title: "Estágio em Desenvolvimento",
+              description: "Desenvolvimento de aplicações web.",
+            },
+            {
+              title: "Estágio em Design",
+              description: "Criação de layouts e design gráfico.",
+            },
           ],
           icon: "bi bi-person-badge",
         },
@@ -185,7 +206,16 @@ export default {
           name: "Mentorias",
           title: "Programas de Mentoria",
           description: "Programas de mentoria para egressos.",
-          items: [],
+          items: [
+            {
+              title: "Mentoria em Carreira",
+              description: "Orientação sobre desenvolvimento de carreira.",
+            },
+            {
+              title: "Mentoria em Tecnologia",
+              description: "Apoio e dicas sobre tecnologia e inovação.",
+            },
+          ],
           icon: "bi bi-lightbulb",
         },
         {
@@ -193,7 +223,16 @@ export default {
           name: "Cursos",
           title: "Cursos Disponíveis",
           description: "Cursos oferecidos para egressos.",
-          items: [],
+          items: [
+            {
+              title: "Curso de Python",
+              description: "Aprenda a programar em Python do zero.",
+            },
+            {
+              title: "Curso de Design Gráfico",
+              description: "Aprenda as ferramentas de design gráfico.",
+            },
+          ],
           icon: "bi bi-book",
         },
       ],
@@ -215,7 +254,7 @@ export default {
 
 <style scoped>
 /* Variáveis de cores */
-navbar {
+.navbar {
   background-color: #ffffff; /* Fundo branco */
   padding: 0.5rem 1rem; /* Padding fino */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
@@ -252,64 +291,35 @@ navbar {
   font-weight: bold; /* Destaque para o link ativo */
 }
 
-/* Alinhamento e espaçamento */
-.navbar-nav {
-  margin-right: 0rem; /* Espaçamento no final da lista */
-  margin-left: auto; /* Empurrar para a direita */
+/* Alinhamento das abas */
+.nav-pills .nav-link {
+  border-radius: 0.5rem; /* Bordas arredondadas */
 }
 
-.nav-item {
-  margin-left: -1.5rem; /* Espaçamento entre os itens */
-}
-
-/* Para telas pequenas */
-@media (max-width: 992px) {
-  .navbar {
-    padding: 0.5rem; /* Ajustando o padding em telas pequenas */
-  }
-
-  .nav-link {
-    font-size: 0.9rem; /* Tamanho da fonte em telas pequenas */
-  }
-
-  .logo {
-    max-height: 40px; /* Reduzindo a logo em telas pequenas */
-  }
-}
-
-/* Botão de navegação ativo */
-.selected-button {
-  background-color: var(--primary-color);
-  color: var(--white-color) !important;
-}
-
-/* Cartões */
+/* Estilo do conteúdo da aba */
 .animated-card {
-  transition: transform 0.2s;
+  transition: transform 0.3s ease; /* Transição suave para o cartão */
 }
+
 .animated-card:hover {
-  transform: scale(var(--card-hover-scale));
+  transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
 }
 
-/* Botões */
-.animated-button {
-  transition: background-color 0.3s, transform 0.3s;
-}
-.animated-button:hover {
-  background-color: var(--hover-color);
-  transform: scale(var(--card-hover-scale));
+.selected-button {
+  background-color: #0056b3; /* Cor de fundo da aba ativa */
+  color: white; /* Cor do texto da aba ativa */
 }
 
-/* Responsividade */
-@media (max-width: 992px) {
-  .navbar {
-    padding: 0.5rem;
-  }
-  .nav-link {
-    font-size: 0.9rem;
-  }
-  .logo {
-    max-height: 40px;
-  }
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil para o cartão */
+}
+
+/* Estilo do botão */
+.btn {
+  transition: background-color 0.2s ease; /* Transição suave para o botão */
+}
+
+.btn:hover {
+  background-color: #0056b3; /* Tom mais escuro ao passar o mouse */
 }
 </style>
