@@ -2,8 +2,6 @@
 defineProps({
   socials: {
     type: Array,
-    icon: String,
-    link: String,
     default: () => [
       {
         icon: '<i class="fab fa-facebook text-lg opacity-8"></i>',
@@ -29,8 +27,6 @@ defineProps({
   },
   links: {
     type: Array,
-    name: String,
-    href: String,
     default: () => [
       { href: "https://www.creative-tim.com/", name: "Company" },
       { href: "https://www.creative-tim.com/presentation", name: "About Us" },
@@ -45,6 +41,7 @@ defineProps({
   },
 });
 </script>
+
 <template>
   <footer class="footer py-5">
     <div class="container">
@@ -61,15 +58,16 @@ defineProps({
           </a>
         </div>
         <div class="col-lg-8 mx-auto text-center mb-4 mt-2">
-          <a
-            v-for="{ icon, link } of socials"
-            :key="link"
-            :href="link"
-            target="_blank"
-            class="text-secondary me-xl-4 me-4"
-            v-html="icon"
-          >
-          </a>
+          <div class="socials-container">
+            <a
+              v-for="{ icon, link } of socials"
+              :key="link"
+              :href="link"
+              target="_blank"
+              class="social-icon"
+              v-html="icon"
+            ></a>
+          </div>
         </div>
       </div>
       <div class="row">
@@ -82,3 +80,37 @@ defineProps({
     </div>
   </footer>
 </template>
+
+<style scoped>
+.footer {
+  background-color: #f8f9fa; /* Cor de fundo do footer */
+}
+
+.socials-container {
+  display: flex; /* Exibe os ícones em linha */
+  justify-content: center; /* Centraliza os ícones */
+  flex-wrap: wrap; /* Permite a quebra de linha se necessário */
+}
+
+.social-icon {
+  display: flex; /* Exibe os ícones como flex items */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  width: 40px; /* Largura do quadrado */
+  height: 40px; /* Altura do quadrado */
+  border-radius: 50%; /* Bordas arredondadas para o quadrado */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* Fundo branco com transparência */
+  margin: 5px; /* Espaçamento entre os ícones */
+  transition: background-color 0.3s; /* Transição suave para hover */
+}
+
+.social-icon:hover {
+  background-color: #007bff; /* Cor ao passar o mouse */
+  color: white; /* Cor do ícone ao passar o mouse */
+}
+</style>
