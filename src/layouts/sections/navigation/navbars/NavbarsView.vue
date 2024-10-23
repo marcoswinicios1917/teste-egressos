@@ -15,7 +15,6 @@ const message = ref("");
 
 // Função para lidar com o envio do formulário
 const handleSubmit = () => {
-  // Aqui você pode adicionar a lógica para enviar o formulário
   alert(`Mensagem enviada por ${name.value} com e-mail ${email.value}`);
   // Limpar campos após o envio
   name.value = "";
@@ -29,12 +28,7 @@ const handleSubmit = () => {
     title="Contato"
     :breadcrumb="[{ label: 'Home', route: '#' }, { label: 'Contato' }]"
   >
-    <View
-      title="Entre em Contato Conosco"
-      id="contact-page"
-      height="auto"
-      class="position-relative pb-5"
-    >
+    <View id="contact-page" height="auto" class="position-relative pb-5">
       <div class="container">
         <div class="row">
           <div class="col-lg-6 my-auto">
@@ -183,11 +177,15 @@ h3 {
 .btn-primary {
   background-color: #007bff; /* Cor do botão */
   border: none; /* Remover bordas */
-  transition: background-color 0.3s ease; /* Transição suave */
+  transition: background-color 0.3s ease, transform 0.1s; /* Transição suave */
 }
 
 .btn-primary:hover {
   background-color: #0056b3; /* Cor do botão ao passar o mouse */
+}
+
+.btn-primary:active {
+  transform: scale(0.95); /* Efeito de clique */
 }
 
 form {
