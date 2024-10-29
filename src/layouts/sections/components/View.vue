@@ -33,7 +33,7 @@
                     role="tab"
                     aria-selected="false"
                   >
-                    <i class="fas fa-edit text-sm me-2"></i> Cadastrar
+                    <i class="fas fa-edit text-sm me-2"></i> Cadastra
                   </a>
                 </li>
               </ul>

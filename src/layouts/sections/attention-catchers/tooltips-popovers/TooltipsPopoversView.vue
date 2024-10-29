@@ -343,7 +343,10 @@ export default {
 
 /* Estilo do botão */
 .btn {
+  background-color: #007bff; /* Azul suave */
+  color: white; /* Texto branco para contraste */
   transition: background-color 0.2s ease; /* Transição suave para o botão */
+  border: none; /* Removendo borda */
 }
 
 .btn:hover {
