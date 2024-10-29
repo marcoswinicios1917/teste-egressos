@@ -1,116 +1,119 @@
-<script setup>
-defineProps({
-  socials: {
-    type: Array,
-    default: () => [
-      {
-        icon: '<i class="fab fa-facebook text-lg opacity-8"></i>',
-        link: "https://www.facebook.com/CreativeTim/",
-      },
-      {
-        icon: '<i class="fab fa-twitter text-lg opacity-8"></i>',
-        link: "https://twitter.com/creativetim",
-      },
-      {
-        icon: '<i class="fab fa-dribbble text-lg opacity-8"></i>',
-        link: "https://dribbble.com/creativetim",
-      },
-      {
-        icon: '<i class="fab fa-github text-lg opacity-8"></i>',
-        link: "https://github.com/creativetimofficial",
-      },
-      {
-        icon: '<i class="fab fa-youtube text-lg opacity-8"></i>',
-        link: "https://www.youtube.com/channel/UCVyTG4sCw-rOvB9oHkzZD1w",
-      },
-    ],
-  },
-  links: {
-    type: Array,
-    default: () => [
-      { href: "https://www.creative-tim.com/", name: "Company" },
-      { href: "https://www.creative-tim.com/presentation", name: "About Us" },
-      { href: "https://www.creative-tim.com/presentation", name: "Team" },
-      {
-        href: "https://www.creative-tim.com/templates/vuejs",
-        name: "Products",
-      },
-      { href: "https://www.creative-tim.com/blog", name: "Blog" },
-      { href: "https://www.creative-tim.com/license", name: "License" },
-    ],
-  },
-});
-</script>
-
 <template>
-  <footer class="footer py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mb-4 mx-auto text-center">
-          <a
-            v-for="{ name, href } of links"
-            :key="name"
-            :href="href"
-            target="_blank"
-            class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2"
-          >
-            {{ name }}
-          </a>
-        </div>
-        <div class="col-lg-8 mx-auto text-center mb-4 mt-2">
-          <div class="socials-container">
-            <a
-              v-for="{ icon, link } of socials"
-              :key="link"
-              :href="link"
-              target="_blank"
-              class="social-icon"
-              v-html="icon"
-            ></a>
-          </div>
-        </div>
+  <footer class="footer-custom py-5">
+    <div class="container text-center">
+      <!-- Imagem da Assinatura -->
+      <div class="footer-image-container mb-3">
+        <img
+          src="/src/assets/img/assinaturaUFDPar.png"
+          alt="Assinatura UFDPar"
+          class="footer-image"
+        />
       </div>
-      <div class="row">
-        <div class="col-8 mx-auto text-center mt-1">
-          <p class="mb-0 text-secondary">
-            Copyright © {{ new Date().getFullYear() }} Material by Creative Tim.
-          </p>
-        </div>
+
+      <!-- Linha dourada preenchendo toda a largura -->
+      <div class="line-container">
+        <hr class="elegant-line" />
+      </div>
+
+      <!-- Copyright -->
+      <div class="footer-text-container mt-4">
+        <p class="mb-0 text-secondary footer-text">
+          Copyright © {{ new Date().getFullYear() }} Portal do Egresso da
+          Universidade Federal do Delta do Parnaíba.
+        </p>
       </div>
     </div>
   </footer>
 </template>
 
+<script setup>
+// Nenhuma lógica JavaScript necessária.
+</script>
+
 <style scoped>
-.footer {
-  background-color: #f8f9fa; /* Cor de fundo do footer */
+.footer-custom {
+  background-color: #003366; /* Azul forte */
+  padding: 2rem 0;
+  color: white;
+  position: relative; /* Para permitir o posicionamento absoluto dos ornamentos */
 }
 
-.socials-container {
-  display: flex; /* Exibe os ícones em linha */
-  justify-content: center; /* Centraliza os ícones */
-  flex-wrap: wrap; /* Permite a quebra de linha se necessário */
+/* Estilo para a imagem de assinatura */
+.footer-image-container {
+  max-width: 250px; /* Tamanho máximo da imagem ajustado */
+  margin: 0 auto; /* Centraliza a imagem */
 }
 
-.social-icon {
-  display: flex; /* Exibe os ícones como flex items */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
-  width: 40px; /* Largura do quadrado */
-  height: 40px; /* Altura do quadrado */
-  border-radius: 50%; /* Bordas arredondadas para o quadrado */
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.8
-  ); /* Fundo branco com transparência */
-  margin: 5px; /* Espaçamento entre os ícones */
-  transition: background-color 0.3s; /* Transição suave para hover */
+.footer-image {
+  max-width: 100%; /* Garante que a imagem não ultrapasse o container */
+  border: none; /* Removendo a borda */
+  border-radius: 0; /* Sem bordas arredondadas */
+  box-shadow: none; /* Removendo a sombra */
+  transition: transform 0.3s ease; /* Transição suave para efeito de hover */
 }
 
-.social-icon:hover {
-  background-color: #007bff; /* Cor ao passar o mouse */
-  color: white; /* Cor do ícone ao passar o mouse */
+/* Efeito de hover na imagem */
+.footer-image:hover {
+  transform: scale(1.05); /* Aumenta levemente a imagem ao passar o mouse */
+}
+
+/* Estilo do container da linha */
+.line-container {
+  margin: 2rem 0; /* Remover margem lateral */
+  width: 100%; /* Faz a linha ocupar toda a largura da tela */
+}
+
+/* Linha dourada com design aprimorado */
+.elegant-line {
+  border: none;
+  height: 6px; /* Aumenta a altura da linha para mais presença */
+  background-image: linear-gradient(
+    to right,
+    #ffd700,
+    /* Dourado vibrante */ #ffcc00,
+    /* Dourado mais claro */ #ffd700 /* Dourado vibrante novamente */
+  ); /* Gradiente dourado */
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); /* Sombra suave para efeito 3D */
+  border-radius: 5px; /* Bordas arredondadas */
+  width: 100%; /* Largura da linha ajustada para 100% */
+}
+
+/* Pequeno ornamento decorativo nas pontas da linha */
+.elegant-line::before,
+.elegant-line::after {
+  content: "";
+  width: 14px; /* Aumenta o tamanho dos ornamentos */
+  height: 14px;
+  background-color: #ffd700; /* Dourado sólido */
+  border-radius: 50%; /* Ornamento circular nas extremidades */
+  position: absolute;
+  top: -7px; /* Ajusta a posição do ornamento */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para profundidade */
+}
+
+.elegant-line::before {
+  left: -10px; /* Alinhamento do ornamento esquerdo */
+}
+
+.elegant-line::after {
+  right: -10px; /* Alinhamento do ornamento direito */
+}
+
+/* Estilo do texto copyright */
+.footer-text {
+  font-size: 1rem; /* Aumenta o tamanho da fonte para maior legibilidade */
+  line-height: 1.5; /* Aumenta o espaço entre linhas */
+}
+
+/* Ajustes para a cor do texto */
+.text-secondary {
+  color: #e0e0e0; /* Tom de cinza suave */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .footer-text {
+    font-size: 0.9rem; /* Tamanho da fonte reduzido em telas menores */
+  }
 }
 </style>
