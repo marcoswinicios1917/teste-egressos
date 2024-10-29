@@ -22,6 +22,7 @@ const handleSubmit = () => {
 };
 
 // Itens de navegação atualizados
+// eslint-disable-next-line no-unused-vars
 const navItems = [
   { id: "home", name: "Home", link: "/" },
   { id: "oportunidades", name: "Oportunidades", link: "/opportunities" },
