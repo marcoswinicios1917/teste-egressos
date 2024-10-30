@@ -651,3 +651,93 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+/* Container Styling */
+.container {
+  /* Define o limite de largura e adiciona um fundo claro */
+  max-width: 1300px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Suave sombra para efeito de elevação */
+}
+
+/* Section Heading Styling */
+h5 {
+  color: #495057; /* Tom escuro para visibilidade */
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* Form Label Styling */
+.form-label {
+  font-weight: 500;
+  color: #6c757d; /* Cor neutra */
+}
+
+/* Input and Select Field Styling */
+.form-control,
+.form-select {
+  border-radius: 6px; /* Bordas levemente arredondadas */
+  border: 1px solid #ced4da;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; /* Transição suave para foco */
+}
+
+/* Input and Select Field Focus State */
+.form-control:focus,
+.form-select:focus {
+  border-color: #007bff; /* Azul no foco */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.25); /* Suave brilho azul */
+}
+
+/* Checkbox Styling */
+.form-check-input {
+  margin-right: 8px;
+}
+
+.form-check-label {
+  color: #495057;
+}
+
+/* Margin Bottom Utility Class */
+.mb-3 {
+  margin-bottom: 1.5rem;
+}
+
+/* Submit Button Styling */
+button[type="submit"] {
+  /* Botão principal com cor azul e animações */
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease,
+    transform 0.2s ease; /* Animações para hover e clique */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Suave sombra para profundidade */
+}
+
+/* Submit Button Hover State */
+button[type="submit"]:hover {
+  background-color: #0056b3; /* Azul mais escuro no hover */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15); /* Sombra mais intensa */
+  transform: translateY(-2px); /* Efeito de elevação ao passar o mouse */
+}
+
+/* Submit Button Focus State */
+button[type="submit"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5); /* Destaque azul no foco */
+}
+
+/* Submit Button Active State */
+button[type="submit"]:active {
+  transform: translateY(1px); /* Leve movimento para baixo no clique */
+  background-color: #004085; /* Azul ainda mais escuro no clique */
+}
+</style>
