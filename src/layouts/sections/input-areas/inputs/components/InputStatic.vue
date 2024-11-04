@@ -9,7 +9,7 @@ import MaterialInput from "@/components/MaterialInput.vue";
         <div class="col-lg-4 mx-auto">
           <MaterialInput
             class="input-group-static mb-4"
-            label="First Name"
+            label="First Nam"
             type="text"
             placeholder="eg. Thomas Shelby"
           />
