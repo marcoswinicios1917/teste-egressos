@@ -1,13 +1,17 @@
+# setup/urls.py
+
 from django.contrib import admin
 from django.urls import path, include
-
-"""
-
-Todas as URLs do egresu
-
-"""
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('egressos.urls')),
+    path('admin/', admin.site.urls),                      # URL do administrador
+    path('api/', include('egressos.urls')),               # Inclui as URLs da API do app egressos
 ]
+
+# Configurações de mídia para desenvolvimento local
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns += [path('__debug__/', include(debug_toolbar.urls))]
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
