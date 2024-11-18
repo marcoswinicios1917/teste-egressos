@@ -23,13 +23,9 @@ const navigateToEgressos = (event) => {
 // Função para lidar com o clique no botão "Mapa de Egressos"
 const navigateToMapaEgressos = (event) => {
   if (event.ctrlKey) {
-    window.open(
-      "http://localhost:3000/sections/page-sections/page-headers",
-      "_blank"
-    );
+    window.open("/sections/input-areas/inputs", "_blank");
   } else {
-    window.location.href =
-      "http://localhost:3000/sections/page-sections/page-headers";
+    router.push("/sections/input-areas/inputs");
   }
 };
 
