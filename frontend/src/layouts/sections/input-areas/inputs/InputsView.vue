@@ -138,6 +138,16 @@ onMounted(() => {
   });
   map.value.addLayer(markersCluster.value);
 });
+// Função que fecha o painel de detalhes se o clique for fora dele
+const closeDetails = (event) => {
+  if (
+    selectedEgresso.value && // Verifica se há um painel aberto
+    !event.target.closest(".details-panel") && // Clique fora do painel
+    !event.target.closest(".leaflet-marker-icon") // Clique fora de marcadores do mapa
+  ) {
+    selectedEgresso.value = null; // Fecha o painel
+  }
+};
 </script>
 
 <template>
@@ -278,13 +288,35 @@ onMounted(() => {
         <p><strong>Curso:</strong> {{ selectedEgresso.course }}</p>
         <p><strong>Ano:</strong> {{ selectedEgresso.year }}</p>
         <p><strong>Status:</strong> {{ selectedEgresso.status }}</p>
-        <button class="btn btn-primary btn-sm mt-2">Ver Mais</button>
+        <button class="btn-primary btn-sm mt-2">Ver Mais</button>
+        <button class="btn-close-details mt-2" @click="selectedEgresso = null">
+          Fechar
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+/* Botão cinza (Fechar) */
+.btn-close-details {
+  background-color: #6c757d; /* Cinza médio */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-close-details:hover {
+  background-color: #5a6268; /* Cinza mais escuro */
+  transform: translateY(-2px); /* Leve elevação ao passar o mouse */
+}
+
+/* Barra de navegação */
 .navbar {
   background-color: #ffffff;
   padding: 0.5rem 1rem;
@@ -332,31 +364,33 @@ onMounted(() => {
   margin-left: -1.5rem;
 }
 
-.active {
-  color: #0056b3 !important;
-  font-weight: bold;
-}
-
+/* Layout principal */
 .content-wrapper {
   display: flex;
-  margin-top: 7rem; /* Ajuste para espaço do navbar */
-  padding: 2rem 3rem; /* Espaçamento mais generoso */
-  gap: 2rem; /* Espaço entre o filtro e o mapa */
-  height: calc(100vh - 120px); /* Ajuste de altura */
-  background-color: #f4f6f8; /* Fundo sutil */
+  flex-direction: row;
+  margin-top: 130px; /* Espaço para o navbar */
+  padding: 20px 15px; /* Ajuste de espaçamento lateral */
+  gap: 20px; /* Espaçamento entre o mapa e a barra lateral */
+  height: calc(100vh - 100px); /* Ajusta altura responsiva */
+  background-color: #f8fafc; /* Fundo suave */
+  overflow: hidden; /* Evita rolagem desnecessária */
 }
 
-/* Estilo para a barra lateral (filtro de egressos) */
+/* Barra lateral (filtros de egressos) */
 .sidebar {
-  width: 330px;
+  flex: 0 0 100%; /* Em telas menores, ocupará 100% da largura */
+  margin-top: 0px;
+  max-width: 300px; /* Limita o tamanho máximo */
   background-color: #ffffff;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
-  gap: -2rem;
-  transition: all 0.3s ease;
+  gap: 0px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow-y: auto; /* Barra de rolagem para conteúdo excedente */
+  max-height: calc(100vh - 120px); /* Altura máxima para ajustar à tela */
 }
 
 .sidebar h5 {
@@ -399,6 +433,7 @@ onMounted(() => {
   font-size: 0.9rem;
 }
 
+/* Painel de estatísticas */
 .stats {
   background-color: #f1f3f5;
   border-radius: 8px;
@@ -411,42 +446,45 @@ onMounted(() => {
   flex-direction: column;
   gap: 0.4rem;
   font-size: 0.9rem;
+  flex-shrink: 0; /* Evita que o painel encolha */
 }
 
 .stats h6 {
   font-weight: 600;
   color: #495057;
+  margin: 0; /* Remove margem */
 }
 
+/* Botões ajustáveis */
 .btn-primary {
-  background-color: #007bff;
-  color: #ffffff;
-  border: none;
-  border-radius: 8px;
-  padding: 0.8rem;
+  width: 70%; /* Garante que os botões ocupem 100% do espaço disponível */
+  background-color: #007bff; /* Azul padrão */
+  max-width: 230px; /* Limita o tamanho máximo */
+  margin: 0 auto; /* Centraliza os botões */
+  padding: 0.5rem;
   font-size: 1rem;
   font-weight: 600;
   text-align: center;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+  transition: all 0.3s ease;
+  border-radius: 60px;
+}
+
+.btn-secondary {
+  width: 70%; /* Garante que os botões ocupem 100% do espaço disponível */
+
+  max-width: 230px; /* Limita o tamanho máximo */
+  margin: 0 auto; /* Centraliza os botões */
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.3s ease;
+  border-radius: 60px;
 }
 
 .btn-primary:hover {
   background-color: #0056b3;
   transform: translateY(-2px);
-}
-
-.btn-secondary {
-  background-color: #6c757d;
-  color: #ffffff;
-  border: none;
-  border-radius: 8px;
-  padding: 0.8rem;
-  font-size: 1rem;
-  font-weight: 600;
-  text-align: center;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 8px rgba(108, 117, 125, 0.2);
 }
 
 .btn-secondary:hover {
@@ -461,52 +499,9 @@ onMounted(() => {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.stats {
-  text-align: center;
-  font-weight: 500;
-  color: #212529;
-  background-color: #f1f3f5;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.btn-primary {
-  background-color: #007bff;
-  color: #ffffff;
-  border: none;
-  border-radius: 8px;
-  padding: 0.75rem;
-  font-size: 1rem;
-  font-weight: 600;
-  transition: background-color 0.3s, transform 0.3s;
-  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
-}
-
-.btn-primary:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px);
-}
-
-.btn-secondary {
-  background-color: #6c757d;
-  color: #ffffff;
-  border: none;
-  border-radius: 8px;
-  padding: 0.75rem;
-  font-size: 1rem;
-  font-weight: 600;
-  transition: background-color 0.3s, transform 0.3s;
-  box-shadow: 0 4px 8px rgba(108, 117, 125, 0.2);
-}
-
-.btn-secondary:hover {
-  background-color: #5a6268;
-  transform: translateY(-2px);
-}
-
 #map-container {
   flex: 1;
+  margin-top: -10px;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -550,18 +545,15 @@ onMounted(() => {
 }
 
 .details-panel button {
-  width: 100%;
-  padding: 0.6rem;
-  background-color: #007bff;
+  width: 70%;
+  padding: 0.5rem;
+  /* background-color: #007bff; */
   color: #fff;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   font-weight: 600;
   border: none;
-  border-radius: 8px;
+  border-radius: 18px;
   transition: background-color 0.3s;
-}
-
-.details-panel button:hover {
-  background-color: #0056b3;
+  margin-left: 50px;
 }
 </style>

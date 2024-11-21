@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
 defineProps({
   image: {
     type: String,
@@ -48,4 +48,4 @@ defineProps({
       </div>
     </div>
   </div>
-</template>
+</template> -->

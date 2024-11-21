@@ -9,7 +9,7 @@
     ]"
   >
     <section class="egress-section">
-      <h1 class="egress-title">🎓 Formulário de Egressos</h1>
+      <!-- <h1 class="egress-title">🎓 Formulário de Egressos</h1> -->
       <View :code="header1Code" id="header-1">
         <HeaderOne />
       </View>

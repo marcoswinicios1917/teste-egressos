@@ -296,64 +296,141 @@ export default {
 </script>
 
 <style scoped>
+/* Configuração geral */
 .container {
-  max-width: 1300px;
-  background-color: #f8f9fa;
+  max-width: 3000px;
+  margin-top: -10px;
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff; /* Cor de fundo unificada */
+  border-radius: 12px; /* Borda suave para elegância */
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1); /* Sombra leve */
 }
 
+/* Título */
 h5 {
   color: #495057;
   font-weight: bold;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  text-align: center; /* Centralizar títulos */
+  font-size: 1.8rem; /* Tamanho ajustado */
 }
 
+/* Labels do formulário */
 .form-label {
-  font-weight: 500;
-  color: #6c757d;
+  font-weight: 600;
+  color: #343a40; /* Cor escura para melhor contraste */
+  margin-bottom: 5px;
 }
 
+/* Campos do formulário */
 .form-control,
 .form-select {
-  border-radius: 6px;
   border: 1px solid #ced4da;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  border-radius: 8px; /* Bordas suaves */
+  padding: 10px;
+  font-size: 1rem;
+  color: #495057;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #f9f9f9; /* Fundo claro para destaque */
 }
 
 .form-control:focus,
 .form-select:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+  border-color: #007bff; /* Azul claro */
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3); /* Efeito de foco */
+  background-color: #ffffff; /* Destaque no foco */
 }
 
+/* Botões */
 button[type="submit"] {
-  background-color: #007bff;
+  background-color: #007bff; /* Azul padrão */
   color: white;
   padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease, box-shadow 0.3s ease,
     transform 0.2s ease;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra inicial */
 }
 
 button[type="submit"]:hover {
-  background-color: #0056b3;
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
-  transform: translateY(-2px);
+  background-color: #0056b3; /* Azul mais escuro no hover */
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15); /* Sombra aumentada */
+  transform: translateY(-2px); /* Leve elevação */
 }
 
 button[type="submit"]:focus {
   outline: none;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Destaque no foco */
 }
 
 button[type="submit"]:active {
-  transform: translateY(1px);
-  background-color: #004085;
+  transform: translateY(1px); /* Pressão ao clicar */
+  background-color: #004085; /* Azul mais intenso */
+}
+
+/* Navegação de abas */
+.nav-wrapper {
+  background-color: #f1f3f5; /* Fundo neutro */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
+}
+
+.nav-pills .nav-link {
+  border-radius: 8px; /* Bordas suaves para os botões */
+  font-weight: 500;
+
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-pills .nav-link:hover {
+  color: white;
+  transform: translateY(-2px); /* Elevação no hover */
+}
+
+/* Área de slots e formulário */
+.tab-content {
+  padding: 30px;
+  border-radius: 0px;
+  box-shadow: 0 0px 0px * /;
+}
+
+/* Transição suave */
+.tab-pane {
+  transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+.tab-pane.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tab-pane:not(.active) {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* Ajuste responsivo */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  h5 {
+    font-size: 1.5rem;
+  }
+
+  .form-control,
+  .form-select {
+    font-size: 0.9rem;
+  }
+
+  button[type="submit"] {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+  }
 }
 </style>

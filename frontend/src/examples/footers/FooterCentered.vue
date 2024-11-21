@@ -38,6 +38,13 @@
   position: relative; /* Para permitir o posicionamento absoluto dos ornamentos */
 }
 
+/* Remover qualquer fundo branco do container */
+.container {
+  background: none; /* Remover fundo */
+  box-shadow: none; /* Remover sombras */
+  padding: 0; /* Ajustar espaçamento */
+}
+
 /* Estilo para a imagem de assinatura */
 .footer-image-container {
   max-width: 250px; /* Tamanho máximo da imagem ajustado */
