@@ -14,10 +14,10 @@ const egressosData = ref({
     { year: 2023, graduates: 500 },
   ],
   byCourse: [
-    { course: "Engenharia", employed: 400 },
+    { course: "Engenharia Pesca", employed: 400 },
     { course: "Medicina", employed: 300 },
-    { course: "Direito", employed: 200 },
-    { course: "Ciência da Computação", employed: 150 },
+    { course: "Economia", employed: 200 },
+    { course: "Fisioterapia", employed: 150 },
     { course: "Psicologia", employed: 150 },
   ],
   byRegion: [
@@ -282,7 +282,7 @@ onMounted(() => {
         <canvas id="byCourseChart"></canvas>
       </div>
       <div class="card">
-        <h5>Cotistas Detalhado</h5>
+        <h5>Cotistas</h5>
         <canvas id="byQuotaDetailedChart"></canvas>
       </div>
       <div class="card">
