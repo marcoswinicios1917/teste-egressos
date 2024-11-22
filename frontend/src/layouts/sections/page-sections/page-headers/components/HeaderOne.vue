@@ -35,7 +35,7 @@ const selectedYear = ref(null);
   <div class="search-page">
     <!-- Formulário de Pesquisa -->
     <section class="search-form">
-      <h1 class="text-center">Busque por Egressos</h1>
+      <h1 class="form-title">Busque por Egressos</h1>
       <form
         @submit.prevent="searchEgressos"
         class="rounded shadow bg-white p-4"
@@ -102,7 +102,7 @@ const selectedYear = ref(null);
 
     <!-- Resultados da Pesquisa -->
     <section class="search-results">
-      <h2 class="text-center">Resultados da Pesquisa</h2>
+      <h2 class="results-title">Resultados da Pesquisa</h2>
       <div class="results-grid">
         <!-- Simulação de Resultados -->
         <div class="card" v-for="n in 12" :key="n">
@@ -122,38 +122,40 @@ const selectedYear = ref(null);
 </template>
 
 <style scoped>
-/* Página de Pesquisa */
+/* Página Principal */
 .search-page {
-  background: #f9f9f9;
-  padding: 20px;
+  background: linear-gradient(to bottom right, #f0f4f9, #ffffff);
+  padding: 40px;
+  font-family: "Arial", sans-serif;
 }
 
 /* Formulário */
 .search-form {
   background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin-bottom: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin-bottom: 40px;
 }
 
-.search-form h1 {
-  font-size: 1.8rem;
-  color: #333;
+.form-title {
+  font-size: 2rem;
+  color: #343a40;
   margin-bottom: 20px;
+  text-align: center;
 }
 
-/* Grade de Inputs */
+/* Grid do Formulário */
 .form-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
 }
 
 .form-label {
-  font-weight: bold;
+  font-weight: 600;
   margin-bottom: 5px;
-  color: #333;
+  color: #495057;
 }
 
 .form-control,
@@ -161,13 +163,15 @@ const selectedYear = ref(null);
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 10px;
-  transition: border-color 0.3s;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  background: #f8f9fa;
 }
 
 .form-control:focus,
 .form-select:focus {
   border-color: #1976d2;
-  box-shadow: 0 0 5px rgba(25, 118, 210, 0.25);
+  box-shadow: 0px 4px 8px rgba(25, 118, 210, 0.2);
 }
 
 /* Resultados */
@@ -175,34 +179,42 @@ const selectedYear = ref(null);
   padding: 20px 0;
 }
 
+.results-title {
+  font-size: 1.8rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 .results-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
 }
 
+/* Cards */
 .card {
-  background-color: #ffffff;
+  background: #ffffff;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 15px;
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .card-title {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: bold;
-  margin-bottom: 10px;
   color: #1976d2;
+  margin-bottom: 10px;
 }
 
 .card-text {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: #555;
 }
 
@@ -210,9 +222,10 @@ const selectedYear = ref(null);
   background-color: #1976d2;
   border: none;
   border-radius: 5px;
-  padding: 5px 10px;
-  font-size: 0.8rem;
+  padding: 8px 15px;
+  font-size: 0.85rem;
   transition: background-color 0.3s;
+  color: white;
 }
 
 .btn-primary:hover {

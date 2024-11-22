@@ -83,31 +83,25 @@ const buttons = ref([
               >Acompanhamento de Egressos da UFDPar</strong
             >
             <p class="mt-3">
-              O Programa de Acompanhamento de Egressos da UFDPar visa manter um
-              elo constante entre a universidade e seus ex-alunos, celebrando
-              suas conquistas e oferecendo apoio contínuo em sua trajetória
-              profissional. Acreditamos que a relação da universidade com seus
-              estudantes vai além da graduação, estendendo-se à construção de
-              uma comunidade vibrante e interligada, que cresce junto com cada
-              conquista pessoal e profissional. Nosso objetivo é entender o
-              impacto da formação acadêmica na carreira dos egressos e
-              identificar oportunidades para aprimorar ainda mais os cursos
-              oferecidos. Dessa forma, o programa busca proporcionar suporte em
-              termos de desenvolvimento profissional, networking e acesso a
-              oportunidades no mercado de trabalho, criando uma rede de suporte
-              mútuo entre a universidade e os ex-alunos. Através de pesquisas,
-              eventos e atividades colaborativas, queremos acompanhar a evolução
-              dos nossos egressos, ajudando-os a enfrentar os desafios do
-              mercado de trabalho, conectar-se com outros profissionais e
-              contribuir para a construção de um ambiente acadêmico cada vez
-              mais qualificado. Mantendo esse vínculo, fortalecemos o
-              compromisso da UFDPar em formar não apenas profissionais
-              competentes, mas também cidadãos conscientes e ativos na
-              sociedade. Participe de nossa rede e ajude a fortalecer o legado
-              da UFDPar, contribuindo com sua experiência e mantendo viva a
-              conexão com a universidade que fez parte da sua história. Juntos,
-              podemos inspirar as futuras gerações e construir um futuro repleto
-              de oportunidades.
+              Nossa caminhada juntos não acaba com sua diplomação! O sucesso de
+              nossos egressos expressam nosso êxito enquanto instituição
+              formadora, por esse motivo, precisamos manter com você que
+              concluiu a graduação, mestrado ou doutorado na Universidade
+              Federal do Delta do Parnaíba um relacionamento contínuo, vivo. A
+              plataforma de egressos tem esse objetivo maior: de continuidade de
+              nossa história! Este é o espaço de diálogo no qual buscamos
+              conhecer sua trajetória após a conclusão de curso e promover o
+              acesso à formação continuada e desenvolvimento profissional;
+              avaliar nossos cursos de graduação e pós- graduação, políticas
+              educacionais e nossa capacidade de atendimento às demandas
+              sociais. Importante também promovermos a aproximação e articulação
+              entre nossos egressos e discentes dos cursos de graduação e
+              programas de pós-graduação no sentido de avançarmos nas melhorias
+              de nossas políticas, estratégias e ações educativas. Esse espaço
+              possibilita ainda informar à sociedade os resultados alcançados
+              pela UFDPar, enquanto instituição formadora. Neste sentido,
+              convidamos a responder o Questionário do Egresso disponível nesta
+              plataforma. Este espaço é seu! Contribua com sua construção.
             </p>
           </div>
         </div>

@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import Chart from "chart.js/auto"; // Certifique-se de instalar o Chart.js com `npm install chart.js`
+import Footer from "../../../../examples/footers/FooterDefault.vue";
 
 // Dados simulados para os gráficos
 const egressosData = ref({
@@ -291,6 +292,7 @@ onMounted(() => {
       </div>
     </div>
   </div>
+  <Footer />
 </template>
 <style>
 /* Estilo global para o corpo */

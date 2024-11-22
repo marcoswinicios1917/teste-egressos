@@ -103,7 +103,7 @@
                   <h5 class="card-title">{{ item.title }}</h5>
                   <p class="card-text">{{ item.description }}</p>
                   <button
-                    class="btn btn-primary animated-button"
+                    class="custom-button"
                     @click="showDetails(item.title)"
                   >
                     Ver Detalhes
@@ -280,6 +280,43 @@ export default {
 </script>
 
 <style scoped>
+.custom-button {
+  display: inline-block;
+  background: #003366;
+  color: white; /* Texto branco */
+  font-size: 1rem; /* Tamanho da fonte */
+  font-weight: 500; /* Peso moderado da fonte */
+  text-transform: uppercase; /* Texto em maiúsculas */
+  padding: 10px 20px; /* Espaçamento interno */
+  border: none; /* Remove a borda */
+  border-radius: 25px; /* Bordas arredondadas suaves */
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  transition: all 0.3s ease; /* Transição suave para hover */
+  cursor: pointer; /* Cursor de clique */
+}
+
+/* Efeito de Hover no Botão */
+.custom-button:hover {
+  background: #357abd; /* Azul mais escuro ao passar o mouse */
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15); /* Sombra levemente mais intensa */
+  transform: translateY(-2px); /* Elevação discreta */
+}
+
+/* Efeito de Clique no Botão */
+.custom-button:active {
+  background: #2b5c91; /* Azul mais profundo no clique */
+  transform: translateY(0); /* Retorna à posição original */
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1); /* Retorna à sombra original */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .custom-button {
+    font-size: 0.9rem; /* Reduz tamanho da fonte em telas menores */
+    padding: 8px 16px; /* Ajusta o espaçamento */
+  }
+}
+
 .footer-custom {
   background-color: #003366; /* Azul forte */
   padding: 2rem 0;

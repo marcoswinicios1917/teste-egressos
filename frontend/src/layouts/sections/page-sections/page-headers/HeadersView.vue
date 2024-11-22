@@ -8,7 +8,7 @@
       { label: 'Histórias de Egressos' },
     ]"
   >
-    <section class="egress-section">
+    <section class="">
       <!-- <h1 class="egress-title">🎓 Formulário de Egressos</h1> -->
       <View :code="header1Code" id="header-1">
         <HeaderOne />
