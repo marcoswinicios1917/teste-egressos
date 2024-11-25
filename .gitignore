@@ -1,33 +1,26 @@
-# Byte-compiled / optimized / DLL files
+# Ignorar arquivos do Python e Django
+*.pyc
 __pycache__/
-*.py[cod]
-*$py.class
-
-# Virtual environment
-venv/
-env/
-
-# Django stuff:
 *.log
 db.sqlite3
 media/
 staticfiles/
-static/
 
-# Node.js
-node_modules/
-dist/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Ignorar ambientes virtuais
+venv/
+env/
 
-# Environment variables
+# Ignorar variáveis de ambiente
 .env
 
-# IDEs and editors
+# Ignorar arquivos do Node.js
+node_modules/
+dist/
+
+# Ignorar arquivos específicos de IDEs
 .vscode/
 .idea/
 
-# OS-specific files
+# Ignorar arquivos de sistema
 .DS_Store
 Thumbs.db
